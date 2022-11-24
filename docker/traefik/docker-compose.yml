@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:latest"
+    container_name: "traefik"
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.adress=:443"
+      - "--certresolv.myresolver.acme.storage=/shared/acme.json"
+    ports:
+      - "80:80" # Web
+      - "443:443" # Websecure
+      - "8080:8080" # Dashboard Ports
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro" # Docker.socket => Read-Only
+      - "/var/lib/docker/volumes/traefik_data:/etc/traefik" # Storage => Dynamic Conf
+      - "./shared:/shared" # Storage => acme.json
