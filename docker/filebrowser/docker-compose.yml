@@ -5,6 +5,6 @@ services:
     container_name: filebrowser
     image: filebrowser/filebrowser:latest
     ports:
-      - "49153:80" # Web-UI Port
+      - "8030:80" # Web-UI Port
     volumes:
-      - "/var/lib/docker/volumes/filebrowser_data:/srv" # Volume Port for direct file access => root.SFTP / root.FTP
+      - "/dir/to/store/data:/srv" # This location will store all the data

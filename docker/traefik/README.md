@@ -6,6 +6,7 @@ mkdir /var/lib/docker/volumes/traefik_data/
 mkdir /var/lib/docker/volumes/traefik_data/certs  
 cd /var/lib/docker/volumes/traefik_data/certs  
 -- Create your acme.json file here --  
+touch acme.json
 chmod 600 ./acme.json  
 cd /var/lib/docker/volumes/traefik_data  
 -- Configure your traefik.yml here --  

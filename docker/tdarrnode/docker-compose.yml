@@ -1,0 +1,40 @@
+version: "3.4"
+services:
+  tdarr:
+    container_name: tdarr
+    image: ghcr.io/haveagitgat/tdarr_node:latest
+    restart: always
+    network_mode: bridge
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+      - 8267:8267 # Internal node port
+    environment:
+      - TZ= # Your Timezone here
+      - PUID=0
+      - PGID=0
+      - UMASK_SET=002
+      - serverIP= # Your server ip here (if local network use the: Class-C IP Address)
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - nodeID= # Choose your external node name
+      - nodeIP=0.0.0.0
+      - nodePort=8267
+      # Uncomment for NVENC
+      #- NVIDIA_DRIVER_CAPABILITIES=all
+      #- NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /var/lib/docker/volumes/tdarr_data/server:/app/server
+      - /var/lib/docker/volumes/tdarr_data/configs:/app/configs
+      - /var/lib/docker/volumes/tdarr_data/logs:/app/logs
+      - /dir/to/media:/media
+      - /dir/to/temp:/temp
+      - /dir/to/cache:/cache
+    # Uncomment for NVENC
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #        - capabilities: [gpu]
+    #          driver: nvidia

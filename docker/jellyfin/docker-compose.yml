@@ -1,0 +1,29 @@
+version: "2.1"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ= # Your Timezone here
+      - JELLYFIN_PublishedServerUrl=https://YOURDOMAIN.COM
+    volumes:
+      - /var/lib/docker/volumes/jellyfin_data/config:/config
+      - /var/lib/docker/volumes/jellyfin_data/cache:/cache
+      - /dir/to/movies:/data/movies
+      - /dir/to/tvshows:/data/tv
+      - /dir/to/anime:/data/anime
+      - /dir/to/animemovies:/data/animemovies
+      - /dir/to/music:/data/music
+      - /dir/to/books:/data/books
+    ports:
+      - 8096:8096
+    restart: always
+    # UNCOMMENT IF YOU WANT TO USE NVENC
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #        - capabilities: [gpu]
+    #          driver: nvidia
