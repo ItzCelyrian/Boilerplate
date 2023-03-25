@@ -1,21 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;
-0,200;
-0,300;
-0,400;
-0,500;
-0,600;
-0,700;
-0,800;
-0,900;
-1,100;
-1,200;
-1,300;
-1,400;
-1,500;
-1,600;
-1,700;
-1,800;
-1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://cdn.jsdelivr.net/gh/prayag17/Jellyfin-Icons@latest/Font%20Awesome/light.min.css");
 :root{
     --accent1-light:#a95bc2;
@@ -1025,10 +1008,7 @@ a[is=emby-linkbutton]:not(.listItem-border,.navMenuOption):hover:after{
   background: url(https://i.imgur.com/9vL4iNf.png) !important; 
   background-size: cover !important;
 }
-.layout-mobile #loginPage>div{
-    max-width:85vw;
-    width:85vw
-}
+
 body,h1,h2,h4,h5,html{
     font-family:Montserrat,sans-serif
 }
